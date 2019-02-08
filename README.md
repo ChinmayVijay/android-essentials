@@ -85,6 +85,8 @@ Android system supports two different forms of navigation strategies for your ap
     
 ## 3. Lifecycle
 
+![alt text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_activity_lifecycle_mindorks_image.png)
+
 
 ## 4. Preferences
 ## 4. Preferences
