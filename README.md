@@ -86,9 +86,11 @@ Android system supports two different forms of navigation strategies for your ap
 ## 3. Lifecycle
 
 Activity Lifecyle: 
+
 ![alt text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_activity_lifecycle_mindorks_image.png)
 
 Fragment Lifecycle: 
+
 ![alt text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_fragments_lifecycle_mindorks_image.png)
 
 Acitivity and Fragment LifeCycle in Comparison: 
@@ -97,9 +99,104 @@ Acitivity and Fragment LifeCycle in Comparison:
 
 
 ## 4. Preferences
-## 4. Preferences
+
+It is part of the android JetPack.
+A Preference is the basic building block of the Preference Library. A settings screen contains a Preference hierarchy. You can define this hierarchy as an XML resource, or you can build a hierarchy in code.
+
+The sections below describe how to build a simple settings screen using the AndroidX Preference Library.
+
+    <androidx.preference.PreferenceScreen
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <SwitchPreferenceCompat
+            app:key="notifications"
+            app:title="Enable message notifications"/>
+
+        <Preference
+            app:key="feedback"
+            app:title="Send feedback"
+            app:summary="Report technical issues or suggest new features"/>
+
+    </androidx.preference.PreferenceScreen>
+
+NOTE :::: The root tag must be a <PreferenceScreen>, and the XML resource must be placed in the res/xml/ directory.
+    
+  To inflate a hierarchy from an XML attribute, create a PreferenceFragmentCompat, override onCreatePreferences(), and provide the XML resource to inflate, as shown in the example below:
+  
+      public class MySettingsFragment extends PreferenceFragmentCompat {
+        @Override
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            setPreferencesFromResource(R.xml.preferences, rootKey);
+        }
+    }
+    
+    public class MySettingsActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.settings_container, new MySettingsFragment())
+                .commit();
+    }
+}
+
+
 ## 5. Stroing Data in SQLite
+
+SQL databases:
+
+        1. Store data in tables of rows and columns.
+        2. The intersection of a row and column is called a field.
+        3. Fields contain data, references to other fields, or references to other tables.
+        4. Rows are identified by unique IDs.
+        5. Columns are identified by names that are unique per table.
+Think of it as a spreadsheet with rows, columns, and cells, where cells can contain data, references to other cells, and links to other sheets.
+
+SQLite:
+
+SQLite is a software library that implements SQL database engine that is:
+
+        self-contained (requires no other components)
+        serverless (requires no server backend)
+        zero-configuration (does not need to be configured for your application)
+        transactional (changes within a single transaction in SQLite either occur completely or not at all)
+        SQLite is the most widely deployed database engine in the world. The source code for SQLite is in the public domain.
+        For details of the SQLite database, see the SQLite website.
+
+
+Transactions:
+
+    A transaction is a sequence of operations performed as a single logical unit of work. A logical unit of work must exhibit four properties, called the atomicity, consistency, isolation, and durability (ACID) properties, to qualify as a transaction.
+    All changes within a single transaction in SQLite either occur completely or not at all, even if the act of writing the change out to the disk is interrupted by a program crash, an operating system crash, or a power failure.
+
+Examples of transactions:
+Transferring money from a savings account to a checking account.
+Entering a term and definition into dictionary.
+Committing a changelist to the master branch.
+ACID:
+
+    1. Atomicity. Either all of its data modifications are performed, or none of them are performed.
+    2. Consistency. When completed, a transaction must leave all data in a consistent state.
+    3. Isolation. Modifications made by concurrent transactions must be isolated from the modifications made by any other concurrent transactions. A transaction either recognizes data in the state it was in before another concurrent transaction modified it, or it recognizes the data after the second transaction has completed, but it does not recognize an intermediate state.
+    4. Durability. After a transaction has completed, its effects are permanently in place in the system. The modifications persist even in the event of a system failure.
+More on transactions.
+
+
+
+Cursors:
+
+    Queries always return a Cursor object. A Cursor is an object interface that provides random read-write access to the result set returned by a database query. It points to the first element in the result of the query.
+    A cursor is a pointer into a row of structured data. You can think of it as a pointer to table rows.
+    The Cursor class provides methods for moving the cursor through that structure, and methods to get the data from the columns of each row.
+    When a method returns a Cursor object, you iterate over the result, extract the data, do something with the data, and finally close the cursor to release the memory.
+
+
+
 ## 6. Content Providers
+
+
+
 ## 7. Android Architecture Components
 ## 8. Background Tasks
 ## 9. UI - Constraint Layout
