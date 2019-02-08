@@ -85,15 +85,15 @@ Android system supports two different forms of navigation strategies for your ap
     
 ## 3. Lifecycle
 
-Activity Lifecyle
+Activity Lifecyle: 
 ![alt text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_activity_lifecycle_mindorks_image.png)
 
-Fragment Lifecycle:
-![alt text] (https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_fragments_lifecycle_mindorks_image.png)
+Fragment Lifecycle: 
+![alt text](https://s3.ap-south-1.amazonaws.com/mindorks-server-uploads/android_fragments_lifecycle_mindorks_image.png)
 
-Acitivity and Fragment LifeCycle in Comparison:
+Acitivity and Fragment LifeCycle in Comparison: 
 
-![alt text] (https://github.com/xxv/android-lifecycle/raw/master/complete_android_fragment_lifecycle.png)
+![alt text](https://github.com/xxv/android-lifecycle/raw/master/complete_android_fragment_lifecycle.png)
 
 
 ## 4. Preferences
