@@ -495,6 +495,60 @@ Permissions are not covered in detail in these concepts.
 
 
 ## 7. Android Architecture Components
+
+What are Android Architecture Components?
+    Android Architecture Components is a collection of libraries that help you design robust, testable and maintainable apps. 
+    It provides you guidance on app architecture with libraries for common tasks like lifecycle management and data persistence.
+    ![alt text](https://google-developer-training.gitbooks.io/android-developer-advanced-course-concepts/content/images/14-1-c-architecture-components/dg_architecture_comonents.png)
+    
+    Room: Room is a ORM(Mobject Relational Mapping) library that maps your database with your Java Objects.
+    Room uses three Annotations and Components to define the Mapping:
+        1. @Entity: An Entity is an annotated class that represnts a Database table and its columns.
+        2. @DAO: An interface where we put all our sql queries. The Room database uses DAO to issue queries to all the database.
+                we just need to make a method and annotate with specific annotations like “@Insert”, “@Delete”, "@Query(SELECT FROM *)".
+        3. @Database: This is an abstract layer over database, this helps us in all the work which we use to do in SQLiteOpenHelper                     class. We need to create an abstract class (Room class) which extends RoomDatabase.  Room helps us with the compile-time                 checking of SQL statements; we need only a single instance for the whole app.
+        
+        eg: 
+        @Entity(tableName = "habitClass")
+        data class Habit(@PrimaryKey
+                          @ColumnInfo(name = "habit") val mHabit: String)
+        
+        ---------------------------------------------------------------------------------
+        @Dao
+        interface HabitDao {
+
+            @Insert
+            fun insert(habit: Habits)
+
+            @Query("DELETE FROM habitClass")
+            fun deleteAll()
+
+            @Query("SELECT * FROM habitClass ORDER BY habit ASC" )
+            fun getAllHabits() : List<Habits>
+    }
+    ---------------------------------------------------------------------------------------
+        @Database(entities = {Habit.class}, version = 1)
+        public abstract class HabitRoomDatabase extends RoomDatabase{
+
+          public abstract HabitDao wordDao();
+
+          //SINGLETON
+          private static HabitRoomDatabase INSTANCE;
+
+          static HabitRoomDatabase getDatabase(final Context context) {
+            if (INSTANCE == null) {
+              synchronized (HabitRoomDatabase.class) {
+                if (INSTANCE == null) {
+                  INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                      HabitRoomDatabase.class, "habit_database")
+                      .build();
+                }
+              }
+            }
+            return INSTANCE;
+          }
+    
+
 ## 8. Background Tasks
 ## 9. UI - Constraint Layout
 ## 10. UI - Accessibility & Internalization
