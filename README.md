@@ -547,6 +547,9 @@ What are Android Architecture Components?
             }
             return INSTANCE;
           }
+          
+
+
     
 
 ## 8. Background Tasks
