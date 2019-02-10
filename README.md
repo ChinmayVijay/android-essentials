@@ -560,6 +560,39 @@ What are Android Architecture Components?
 
 # Part 2
 ## 1. Fragments
+
+What is a Fragment?
+A fragment is a self contained component which has its own UI and lifecycle that can be reused in different part of an app's UI.
+
+A Fragment is a class that contains a portion of an app's ui and behaviour, which can be used across different parts of an app's UI. 
+While a single fragment can be shafred among different activities, each specific instance of the fragment is exclusively tied to the
+activity that hosted it.
+
+Why to use Fragments?
+
+    1. Fragments were introduced in Android 3.0 primarily to support more dynamic and flexible UI designs on a large screen such as tablets.
+    2. By dividing the layout if an activity into fragments, you become able to modify the activity's appearance at runtime and preserve those changes into backstack that's managed by the activity.
+    3. Fragments can share the responsibilites if an acitivity by handling the UI part to overcome the burden of an activity when dealing with device form factor differences.
+    4. Fragments can also help in data sharing across activities.
+
+Types of Fragment:
+
+    1. ListFragment
+    Displays a list of items managed by an adapter.
+    
+    2. DialogFragment
+    Used to display a Floating dialog. DialogFragment is useful because you can incorporate the fragment dialog into the back stack of a 
+    fragment that is maintianed by the activity, allowing the user to return to a dismissed fragment
+    3. PreferenceFragmentCompat:
+    Displays a hierarchy of Preference object as a list. It is used to create a Preference screen for your application.
+    4. WebViewFragment  : deprecated in API level 28
+    
+   How to Create a Fragment:
+    
+    To create a fragment, you must create a subclass of Fragment (or an existing subclass of it). The Fragment class has code that looks a lot like an Activity. It contains callback methods similar to an activity, such as onCreate(), onStart(), onPause(), and onStop().
+    
+
+
 ## 2. Libraries
 ## 3. FCM
 ## 4. Places
